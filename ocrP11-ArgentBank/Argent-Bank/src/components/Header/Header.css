@@ -42,3 +42,19 @@
 .fa{
   padding-right: 0.5rem;
 }
+
+.navigation{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+  max-width: 100%;
+}
+
+.out-div{
+  display: flex;
+  max-width: 200px;
+  justify-content: center;
+  align-items: center;
+  
+}

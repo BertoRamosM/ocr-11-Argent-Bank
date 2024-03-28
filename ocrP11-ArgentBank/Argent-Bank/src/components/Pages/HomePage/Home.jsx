@@ -1,7 +1,7 @@
-import chatIcon from "../../assets/img/icon-chat.png";
-import moneyIcon from "../../assets/img/icon-money.png";
-import securityIcon from "../../assets/img/icon-security.png";
-import Hero from "../Hero/Hero";
+import chatIcon from "../../../assets/img/icon-chat.png";
+import moneyIcon from "../../../assets/img/icon-money.png";
+import securityIcon from "../../../assets/img/icon-security.png";
+import Hero from "../../Hero/Hero"
 import Features from "./Features/Features";
 
 const Home = () => {
