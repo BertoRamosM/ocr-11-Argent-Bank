@@ -19,7 +19,7 @@ const Header = () => {
 
       <div>
         {signin ? (
-          <div class="navigation">
+          <div className="navigation">
             <NavLink className="main-nav-item out-div">
               <i
                 className="fa fa-user-circle"
@@ -28,7 +28,7 @@ const Header = () => {
               <p>Tony</p>
             </NavLink>
             <NavLink className="main-nav-item out-div">
-              <i class="fa fa-sign-out" style={{ paddingRight: "0.3rem" }}></i>
+              <i className="fa fa-sign-out" style={{ paddingRight: "0.3rem" }}></i>
               <p>Sign Out</p>
             </NavLink>
           </div>

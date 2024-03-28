@@ -1,8 +1,29 @@
 import chatIcon from "../../../assets/img/icon-chat.png";
 import moneyIcon from "../../../assets/img/icon-money.png";
 import securityIcon from "../../../assets/img/icon-security.png";
-import Hero from "../../Hero/Hero"
+import Hero from "../../Hero/Hero";
 import Features from "./Features/Features";
+
+const ListOfFeatures = [
+  {
+    id: 1,
+    title: "You are our #1 priority",
+    description: "Need to talk to a representative? You can get in touch through our 24/7 chat or through a phone call in less than 5 minutes.",
+    icon: chatIcon
+  },
+  {
+    id: 2,
+    title: "More savings means higher rates",
+    description: "The more you save with us, the higher your interest rate will be!",
+    icon: moneyIcon
+  },
+  {
+    id: 3,
+    title: "Security you can trust",
+    description: "We use top of the line encryption to make sure your data and money is always safe.",
+    icon: securityIcon
+  },
+];
 
 const Home = () => {
   return (
@@ -11,21 +32,15 @@ const Home = () => {
         <Hero />
         <section className="features">
           <h2 className="sr-only">Features</h2>
-          <Features
-            icon={chatIcon}
-            title="You are our #1 priority"
-            description="Need to talk to a representative? You can get in touch through our 24/7 chat or through a phone call in less than 5 minutes."
-          />
-          <Features
-            icon={moneyIcon}
-            title="More savings means higher rates"
-            description="The more you save with us, the higher your interest rate will be!"
-          />
-          <Features
-            icon={securityIcon}
-            title="Security you can trust"
-            description="We use top of the line encryption to make sure your data and money is always safe."
-          />
+
+          {ListOfFeatures.map((feature) =>(
+            <Features
+              key={feature.id}
+              title={feature.title}
+              description={feature.description}
+              icon={feature.icon}
+            />
+          ))}
         </section>
       </main>
     </>
