@@ -4,7 +4,7 @@ import "./UserPage.css"
 const UserPage = () => {
 
   return (
-    <main class="main bg-dark">
+    <main class="main bg-dark-user">
       <div class="header">
         <h1>
           Welcome back
