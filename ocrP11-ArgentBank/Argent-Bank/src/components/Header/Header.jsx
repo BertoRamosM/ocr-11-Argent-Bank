@@ -19,7 +19,7 @@ const Header = () => {
 
       <div>
         <NavLink className="main-nav-item" to={'/signin'}>
-          <i className="fa fa-user-circle"></i>
+          <i className="fa fa-user-circle" style={{paddingRight: "0.3rem"}}></i>
           Sign In
         </NavLink>
       </div>
