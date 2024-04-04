@@ -3,7 +3,7 @@ import "./UserPage.css";
 
 const ListOfAccounts = [
   {
-    id:1,
+    id: 1,
     title: "Argent Bank Checking (x8349)",
     amount: "$2,082.79",
     description: "Available Balance",
