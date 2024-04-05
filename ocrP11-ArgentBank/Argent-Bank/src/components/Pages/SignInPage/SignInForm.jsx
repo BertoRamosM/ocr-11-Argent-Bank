@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLogin } from "../../../features/authSlice";
+import { useNavigate } from "react-router-dom";
 import FormInput from "./FormInput";
 
 const SignInForm = () => {
   const dispatch = useDispatch();
   const { error, isLoggedIn } = useSelector((store) => store.auth);
+
+  const naviate = useNavigate()
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,6 +26,13 @@ const SignInForm = () => {
        return () => clearTimeout(timeout);
      }
    }, [error]);
+  
+  
+    useEffect(() => {
+      if (isLoggedIn) {
+        navigate("/profile");
+      }
+    }, [isLoggedIn, navigate]);
   
   
   return (
