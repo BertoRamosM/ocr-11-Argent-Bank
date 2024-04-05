@@ -10,8 +10,21 @@ const SignInForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [remember, setRememberMe] = useState(false);
-  const [wrongLogin, setWrongLogin] = useState("");
+  const [wrongLogin, setWrongLogin] = useState("Wrong Email or Password");
 
+
+   useEffect(() => {
+     if (error) {
+       setLoginError(error);
+       const timeout = setTimeout(() => {
+         setLoginError("");
+       }, 1500);
+
+       return () => clearTimeout(timeout);
+     }
+   }, [error]);
+  
+  
   return (
     <main className="main bg-dark">
       <section className="sign-in-content">

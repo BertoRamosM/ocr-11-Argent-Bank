@@ -1,6 +1,10 @@
 .main {
     flex: 1;
   }
+
+  .form{ 
+    position: relative;
+  }
   .bg-dark {
     background-color: #12002b;
     height: 77vh;
@@ -38,14 +42,12 @@
   }
 
 
-  form {
-    position: relative;
-    .error-message {
-      position: absolute;
+  
+    .error-msg{
       color: red;
       font-weight: bold;
-      left:20%;
+      padding-top: 1rem;
     }
-  }
+  
 
   
