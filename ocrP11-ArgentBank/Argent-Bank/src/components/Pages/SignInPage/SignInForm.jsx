@@ -34,6 +34,16 @@ const SignInForm = () => {
       }
     }, [isLoggedIn, navigate]);
   
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+      try {
+        await dispatch(fetchLogin({ email, password, rememberMe }));
+      } catch (error) {
+        console.log(error);
+        sessionStorage.removeItem("token");
+      }
+    };
+  
   
   return (
     <main className="main bg-dark">
