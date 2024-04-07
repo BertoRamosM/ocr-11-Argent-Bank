@@ -1,9 +1,21 @@
 import "./Header.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import logo from "../../assets/img/argentBankLogo.png";
+import { useDispatch } from "react-redux";
+import { logOut } from "../../features/authSlice";
 
 const Header = () => {
+  const navigate = useNavigate()
+  const dispatch = useDispatch();
+
+  const handleLogOut = (e) => {
+    e.preventDefault();
+    dispatch(logOut(navigate("/login")));
+    sessionStorage.removeItem("token");
+  };
+
+
   const signin = true;
 
   return (
