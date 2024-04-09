@@ -3,7 +3,9 @@ import axios from "axios";
 
 export const fetchLogin = createAsyncThunk(
   "auth/login",
-  async ({ email, password, rememberMe }, { rejectWithValue }) => {
+  async ({ email, password, rememberMe }, {
+    //provided by redux
+    rejectWithValue }) => {
     try {
       const response = await axios.post(
         "http://localhost:3001/api/v1/user/login",
@@ -16,9 +18,7 @@ export const fetchLogin = createAsyncThunk(
 
       if (rememberMe) {
         localStorage.setItem("token", token);
-      } else {
-        sessionStorage.setItem("token", token);
-      }
+      } 
 
       return token;
     } catch (error) {

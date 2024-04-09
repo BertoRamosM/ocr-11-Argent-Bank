@@ -4,8 +4,10 @@ import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/img/argentBankLogo.png";
 import { useDispatch } from "react-redux";
 import { logOut } from "../../features/authSlice";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const {isLoggedIn} = useSelector((store => store.auth))
   const navigate = useNavigate()
   const dispatch = useDispatch();
 
@@ -16,7 +18,6 @@ const Header = () => {
   };
 
 
-  const signin = true;
 
   return (
     <nav className="main-nav">
@@ -30,7 +31,7 @@ const Header = () => {
       </NavLink>
 
       <div>
-        {signin ? (
+        {isLoggedIn ? (
           <div className="navigation">
             <NavLink className="main-nav-item out-div">
               <i
@@ -39,9 +40,11 @@ const Header = () => {
               ></i>
               <p>Tony</p>
             </NavLink>
-            <NavLink className="main-nav-item out-div"
-            onClick={handleLogOut}>
-              <i className="fa fa-sign-out" style={{ paddingRight: "0.3rem" }}></i>
+            <NavLink className="main-nav-item out-div" onClick={handleLogOut}>
+              <i
+                className="fa fa-sign-out"
+                style={{ paddingRight: "0.3rem" }}
+              ></i>
               <p>Sign Out</p>
             </NavLink>
           </div>
