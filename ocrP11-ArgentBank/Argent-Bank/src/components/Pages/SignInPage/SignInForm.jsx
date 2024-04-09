@@ -8,11 +8,11 @@ const SignInForm = () => {
   const dispatch = useDispatch();
   const { error, isLoggedIn } = useSelector((store) => store.auth);
 
-  const naviate = useNavigate()
+  const navigate = useNavigate()
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [remember, setRememberMe] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
   const [wrongLogin, setWrongLogin] = useState("Wrong Email or Password");
 
 
@@ -50,7 +50,7 @@ const SignInForm = () => {
       <section className="sign-in-content">
         <i className="fa fa-user-circle"></i>
         <h1>Sign In</h1>
-        <form>
+        <form onSubmit={handleSubmit}>
           <FormInput
             className="input-wrapper"
             htmlFor="email"

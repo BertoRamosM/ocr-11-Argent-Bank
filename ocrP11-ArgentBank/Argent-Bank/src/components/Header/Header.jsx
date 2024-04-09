@@ -11,7 +11,7 @@ const Header = () => {
 
   const handleLogOut = (e) => {
     e.preventDefault();
-    dispatch(logOut(navigate("/login")));
+    dispatch(logOut(navigate("/signin")));
     sessionStorage.removeItem("token");
   };
 
@@ -39,7 +39,8 @@ const Header = () => {
               ></i>
               <p>Tony</p>
             </NavLink>
-            <NavLink className="main-nav-item out-div">
+            <NavLink className="main-nav-item out-div"
+            onClick={handleLogOut}>
               <i className="fa fa-sign-out" style={{ paddingRight: "0.3rem" }}></i>
               <p>Sign Out</p>
             </NavLink>
