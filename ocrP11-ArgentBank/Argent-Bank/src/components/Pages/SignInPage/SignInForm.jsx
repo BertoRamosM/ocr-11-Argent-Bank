@@ -13,14 +13,14 @@ const SignInForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
-  const [wrongLogin, setWrongLogin] = useState("Wrong Email or Password");
+  const [wrongLogin, setWrongLogin] = useState("");
 
 
    useEffect(() => {
      if (error) {
-       setLoginError(error);
+       setWrongLogin(error);
        const timeout = setTimeout(() => {
-         setLoginError("");
+         setWrongLogin("");
        }, 1500);
 
        return () => clearTimeout(timeout);
