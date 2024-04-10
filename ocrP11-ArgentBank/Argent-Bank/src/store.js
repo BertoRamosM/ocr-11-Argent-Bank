@@ -5,6 +5,6 @@ import userReducer from "./features/editUserSlice";
 export const store = configureStore({
   reducer: {
     auth: authReducer,
-    user: userReducer,
+    profile: userReducer,
   }
 })

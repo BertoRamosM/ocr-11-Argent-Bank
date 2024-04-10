@@ -7,17 +7,19 @@ import { logOut } from "../../features/authSlice";
 import { useSelector } from "react-redux";
 
 const Header = () => {
-  const {isLoggedIn} = useSelector((store => store.auth))
-  const navigate = useNavigate()
+  const { userName } = useSelector((state) => state.profile);
+
+  const { isLoggedIn } = useSelector((store) => store.auth);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleLogOut = (e) => {
     e.preventDefault();
     dispatch(logOut(navigate("/signin")));
     sessionStorage.removeItem("token");
+    localStorage.removeItem("token");
+
   };
-
-
 
   return (
     <nav className="main-nav">
@@ -38,7 +40,7 @@ const Header = () => {
                 className="fa fa-user-circle"
                 style={{ paddingRight: "0.3rem" }}
               ></i>
-              <p>Tony</p>
+              <p>{userName}</p>
             </NavLink>
             <NavLink className="main-nav-item out-div" onClick={handleLogOut}>
               <i

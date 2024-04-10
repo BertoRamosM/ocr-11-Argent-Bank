@@ -1,5 +1,7 @@
+import { useSelector } from "react-redux";
 import AccountItem from "./AccountItem";
 import "./UserPage.css";
+import { editProfile } from "../../../features/editUserSlice";
 
 const ListOfAccounts = [
   {
@@ -23,13 +25,16 @@ const ListOfAccounts = [
 ];
 
 const UserPage = () => {
+  
+  const {firstName, lastName, userName}= useSelector(store => store.profile)
+
   return (
     <main className="main bg-dark-user">
       <div className="header">
         <h1>
           Welcome back
           <br />
-          Tony Jarvis!
+          {firstName}
         </h1>
         <button className="edit-button">Edit Name</button>
       </div>
