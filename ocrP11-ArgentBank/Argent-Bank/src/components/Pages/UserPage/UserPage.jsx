@@ -1,7 +1,10 @@
 import { useSelector } from "react-redux";
 import AccountItem from "./AccountItem";
 import "./UserPage.css";
-import { editProfile } from "../../../features/editUserSlice";
+import { editProfile, fetchUserProfile } from "../../../features/editUserSlice";
+import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import EditName from "./EditName"
 
 const ListOfAccounts = [
   {
@@ -25,8 +28,19 @@ const ListOfAccounts = [
 ];
 
 const UserPage = () => {
+  const { firstName, lastName, userName } = useSelector(store => store.profile)
+
+  const [isEditing, setEditing] = useState(false)
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchUserProfile())
+  }, [dispatch])
   
-  const {firstName, lastName, userName}= useSelector(store => store.profile)
+  const toggleEditing = () => {
+    setEditing(!isEditing)
+  }
 
   return (
     <main className="main bg-dark-user">
@@ -34,18 +48,27 @@ const UserPage = () => {
         <h1>
           Welcome back
           <br />
-          {firstName}
+          <p>
+            {firstName} {lastName}
+          </p>
         </h1>
-        <button className="edit-button">Edit Name</button>
+        {isEditing ? (
+          <EditName toggleEditing={toggleEditing} />
+        ) : (
+          <button className="edit-button" onClick={toggleEditing}>
+            Edit Name
+          </button>
+        )}
       </div>
       <h2 className="sr-only">Accounts</h2>
-      
+
       {ListOfAccounts.map((item) => (
         <AccountItem
           key={item.id}
           title={item.title}
           amount={item.amount}
-          description={item.description} />
+          description={item.description}
+        />
       ))}
     </main>
   );
