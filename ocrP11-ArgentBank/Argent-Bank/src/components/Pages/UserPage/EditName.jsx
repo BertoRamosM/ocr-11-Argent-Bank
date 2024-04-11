@@ -52,16 +52,22 @@ function EditUserName({ toggleEditing }) {
           defaultValue={lastName}
         />
       </div>
-     
-      <button className="edit-button" type="submit"
-      style={{marginRight: "3rem", width: "6rem", marginLeft: "6rem"}}>
-          Save
-        </button>
 
-      <button className="edit-button" onClick={toggleEditing}
-      style={{width: "6rem"}}>
-          Cancel
-        </button>
+      <button
+        className="edit-button"
+        type="submit"
+        style={{ marginRight: "3rem", width: "6rem", marginLeft: "6rem" }}
+      >
+        Save
+      </button>
+
+      <button
+        className="edit-button"
+        onClick={toggleEditing}
+        style={{ width: "6rem" }}
+      >
+        Cancel
+      </button>
     </form>
   );
 }

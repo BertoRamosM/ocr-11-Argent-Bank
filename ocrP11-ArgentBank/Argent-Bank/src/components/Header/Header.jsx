@@ -35,7 +35,9 @@ const Header = () => {
       <div>
         {isLoggedIn ? (
           <div className="navigation">
-            <NavLink className="main-nav-item out-div">
+            <NavLink
+            to={"/user"}
+              className="main-nav-item out-div">
               <i
                 className="fa fa-user-circle"
                 style={{ paddingRight: "0.3rem" }}

@@ -18,8 +18,10 @@ export const fetchLogin = createAsyncThunk(
 
       if (rememberMe) {
         localStorage.setItem("token", token);
-      } 
-
+      } else {
+        sessionStorage.setItem("token", token);
+      }
+      
       return token;
     } catch (error) {
       return rejectWithValue(error.response.data.message);

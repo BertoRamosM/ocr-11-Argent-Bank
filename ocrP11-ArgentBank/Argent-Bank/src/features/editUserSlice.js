@@ -1,9 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const getAuthToken = () =>
-  localStorage.getItem("token") || sessionStorage.getItem("token");
-
 export const fetchUserProfile = createAsyncThunk(
   "profile/fetchUserProfile",
   async (_, thunkAPI) => {
@@ -11,7 +8,13 @@ export const fetchUserProfile = createAsyncThunk(
       const response = await axios.post(
         "http://localhost:3001/api/v1/user/profile",
         {},
-        { headers: { Authorization: `Bearer ${getAuthToken()}` } }
+        {
+          headers: {
+            Authorization: `Bearer ${
+              localStorage.getItem("token") || sessionStorage.getItem("token")
+            }`,
+          },
+        }
       );
       return response.data.body;
     } catch (err) {
@@ -27,7 +30,13 @@ export const updateUserName = createAsyncThunk(
       const response = await axios.put(
         "http://localhost:3001/api/v1/user/profile",
         { userName: newUserName },
-        { headers: { Authorization: `Bearer ${getAuthToken()}` } }
+        {
+          headers: {
+            Authorization: `Bearer ${
+              localStorage.getItem("token") || sessionStorage.getItem("token")
+            }`,
+          },
+        }
       );
       return response.data.body;
     } catch (err) {
@@ -53,11 +62,10 @@ const profileSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchUserProfile.fulfilled, (state, action) => {
-        const { email, firstName, lastName, userName } = action.payload;
-        state.email = email;
-        state.firstName = firstName;
-        state.lastName = lastName;
-        state.userName = userName;
+        state.email = action.payload.email;
+        state.firstName = action.payload.firstName;
+        state.lastName = action.payload.lastName;
+        state.userName = action.payload.userName;
       })
       .addCase(fetchUserProfile.rejected, (state, action) => {
         state.error = action.payload.message;

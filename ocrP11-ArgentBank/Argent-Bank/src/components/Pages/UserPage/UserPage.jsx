@@ -28,7 +28,7 @@ const ListOfAccounts = [
 ];
 
 const UserPage = () => {
-  const { firstName, lastName, userName } = useSelector(store => store.profile)
+  const { firstName, lastName } = useSelector(store => store.profile)
 
   const [isEditing, setEditing] = useState(false)
 
@@ -48,9 +48,7 @@ const UserPage = () => {
         <h1>
           Welcome back
           <br />
-          <p>
             {firstName} {lastName}
-          </p>
         </h1>
         {isEditing ? (
           <EditName toggleEditing={toggleEditing} />
