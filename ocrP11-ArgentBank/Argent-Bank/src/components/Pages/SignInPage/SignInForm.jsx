@@ -75,10 +75,10 @@ const SignInForm = () => {
             type="checkbox"
             id="remember"
             text="Remember me"
-            onChange={(e) => setRememberMe(e.target.value)}
+            onChange={(e) => setRememberMe(e.target.checked)}
           />
 
-          <button href="./user.html" className="sign-in-button">
+          <button type="submit" className="sign-in-button">
             Sign In
           </button>
           {wrongLogin && <div className="error-msg">{wrongLogin}</div>}

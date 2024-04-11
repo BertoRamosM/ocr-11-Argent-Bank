@@ -1,7 +1,7 @@
 import "./Header.css";
 import { NavLink, useNavigate } from "react-router-dom";
 
-import logo from "../../assets/img/argentBankLogo.png";
+import logo from "../../assets/img/argentBankLogo.webp";
 import { useDispatch } from "react-redux";
 import { logOut } from "../../features/authSlice";
 import { useSelector } from "react-redux";
@@ -15,10 +15,10 @@ const Header = () => {
 
   const handleLogOut = (e) => {
     e.preventDefault();
-    dispatch(logOut(navigate("/signin")));
+    dispatch(logOut());
+    navigate("/signin");
     sessionStorage.removeItem("token");
     localStorage.removeItem("token");
-
   };
 
   return (
