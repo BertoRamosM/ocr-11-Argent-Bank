@@ -6,8 +6,10 @@ import FormInput from "../SignInPage/FormInput";
 
 function EditUserName({ toggleEditing }) {
   const { firstName, lastName, userName } = useSelector(
-    (state) => state.profile
+    (store) => store.profile
   );
+
+  
   const [newUserName, setNewUserName] = useState(userName);
   const dispatch = useDispatch();
 

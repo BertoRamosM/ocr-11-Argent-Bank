@@ -1,10 +1,11 @@
 import { useSelector } from "react-redux";
 import AccountItem from "./AccountItem";
 import "./UserPage.css";
-import { editProfile, fetchUserProfile } from "../../../features/editUserSlice";
+import {  fetchUserProfile } from "../../../features/editUserSlice";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import EditName from "./EditName"
+import {useNavigate} from "react-router-dom"
 
 const ListOfAccounts = [
   {
@@ -29,10 +30,14 @@ const ListOfAccounts = [
 
 const UserPage = () => {
   const { firstName, lastName } = useSelector(store => store.profile)
+  const navigate = useNavigate()
 
+  const { token } = useSelector((store) => store.auth);
+  console.log(token);
   const [isEditing, setEditing] = useState(false)
 
   const dispatch = useDispatch()
+
 
   useEffect(() => {
     dispatch(fetchUserProfile())
@@ -41,6 +46,18 @@ const UserPage = () => {
   const toggleEditing = () => {
     setEditing(!isEditing)
   }
+
+  //on refresh, if token its available to stay in "/user", otherwise we go "/"
+ useEffect(() => {
+   const storedToken =
+     localStorage.getItem("token") || sessionStorage.getItem("token");
+   if (storedToken) {
+     dispatch({ type: "auth/login/fulfilled", payload: storedToken });
+   } else {
+     dispatch(logOut());
+     navigate("/");
+   }
+ }, [dispatch, navigate]);
 
   return (
     <main className="main bg-dark-user">

@@ -21,7 +21,7 @@ const SignInForm = () => {
        setWrongLogin(error);
        const timeout = setTimeout(() => {
          setWrongLogin("");
-       }, 1500);
+       }, 2000);
 
        return () => clearTimeout(timeout);
      }
