@@ -42,7 +42,8 @@ function EditUserName({ toggleEditing }) {
           text="First Name: "
           type="text"
           id="firstname"
-          defaultValue={firstName}
+          value={firstName}
+          disabled={true}
         />
 
         <FormInput
@@ -51,7 +52,8 @@ function EditUserName({ toggleEditing }) {
           text="Last Name: "
           type="text"
           id="LastName"
-          defaultValue={lastName}
+          value={lastName}
+          disabled={true}
         />
       </div>
 

@@ -33,7 +33,6 @@ const UserPage = () => {
   const { firstName, lastName } = useSelector(store => store.profile)
   const navigate = useNavigate()
 
-  const { token } = useSelector((store) => store.auth);
   const [isEditing, setEditing] = useState(false)
 
   const dispatch = useDispatch()
