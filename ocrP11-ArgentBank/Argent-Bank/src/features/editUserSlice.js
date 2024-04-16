@@ -57,6 +57,7 @@ const profileSlice = createSlice({
   reducers: {
     editProfile: (state, action) => {
       state.userName = action.payload;
+      console.log(state.userName)
     },
   },
   extraReducers: (builder) => {
