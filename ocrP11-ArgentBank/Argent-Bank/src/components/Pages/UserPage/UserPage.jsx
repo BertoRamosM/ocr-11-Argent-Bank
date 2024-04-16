@@ -5,7 +5,8 @@ import {  fetchUserProfile } from "../../../features/editUserSlice";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import EditName from "./EditName"
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import { logOut } from "../../../features/authSlice";
 
 const ListOfAccounts = [
   {
@@ -33,7 +34,6 @@ const UserPage = () => {
   const navigate = useNavigate()
 
   const { token } = useSelector((store) => store.auth);
-  console.log(token);
   const [isEditing, setEditing] = useState(false)
 
   const dispatch = useDispatch()
