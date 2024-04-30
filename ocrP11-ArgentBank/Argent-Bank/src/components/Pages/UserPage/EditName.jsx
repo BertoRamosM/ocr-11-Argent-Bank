@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editProfile } from "../../../features/editUserSlice";
+import { updateUserName } from "../../../features/editUserSlice";
 import FormInput from "../SignInPage/FormInput";
 
 
@@ -15,7 +15,7 @@ function EditUserName({ toggleEditing }) {
 
   const handleSave = () => {
     toggleEditing();
-    dispatch(editProfile(newUserName));
+    dispatch(updateUserName(newUserName));
   };
 
   const handleSubmit = (e) => {

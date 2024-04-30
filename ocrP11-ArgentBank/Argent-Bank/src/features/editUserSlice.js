@@ -26,15 +26,13 @@ export const fetchUserProfile = createAsyncThunk(
 
 export const updateUserName = createAsyncThunk(
   "profile/updateUserName",
-  async (userName, thunkAPI) => {
+  async (NewUserName, thunkAPI) => {
     try {
       const response = await axios.put(
         "http://localhost:3001/api/v1/user/profile",
-        { userName },
+        { userName: NewUserName },
         {
           headers: {
-            accept: "application/json",
-            "Content-Type": "application/json",
             Authorization: `Bearer ${
               localStorage.getItem("token") || sessionStorage.getItem("token")
             }`,
@@ -59,10 +57,7 @@ const profileSlice = createSlice({
     error: null,
   },
   reducers: {
-    editProfile: (state, action) => {
-      state.userName = action.payload;
-      console.log(state.userName)
-    },
+    //no need to change the global state as we fetched from the axios above
   },
   extraReducers: (builder) => {
     builder
