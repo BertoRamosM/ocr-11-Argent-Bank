@@ -16,6 +16,16 @@ const SignInForm = () => {
   const [wrongLogin, setWrongLogin] = useState("");
 
 
+  useEffect(() => {
+     const storedToken =
+      localStorage.getItem("token")
+    if (storedToken) {
+      navigate("/user")
+      dispatch({ type: "auth/login/fulfilled", payload: storedToken });
+    }
+  },[])
+
+
    useEffect(() => {
      if (error) {
        setWrongLogin(error);

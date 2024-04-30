@@ -47,16 +47,15 @@ const UserPage = () => {
   }
 
   //on refresh, if token its available to stay in "/user", otherwise we go "/"
- useEffect(() => {
-   const storedToken =
-     localStorage.getItem("token") || sessionStorage.getItem("token");
-   if (storedToken) {
-     dispatch({ type: "auth/login/fulfilled", payload: storedToken });
-   } else {
-     dispatch(logOut());
-     navigate("/");
-   }
- }, [dispatch, navigate]);
+useEffect(() => {
+  const storedToken =
+    localStorage.getItem("token") || sessionStorage.getItem("token");
+  if (!storedToken) {
+    navigate("/");
+    return;
+  }
+  dispatch({ type: "auth/login/fulfilled", payload: storedToken });
+}, [dispatch, navigate]);
 
   return (
     <main className="main bg-dark-user">
