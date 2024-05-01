@@ -72,11 +72,11 @@ const profileSlice = createSlice({
       })
       .addCase(updateUserName.fulfilled, (state, action) => {
         state.userName = action.payload.userName;
-        console.log("username updated correctly")
+        console.log("username updated correctly");
       })
       .addCase(updateUserName.rejected, (state, action) => {
         state.error = action.payload.message;
-        console.error("error updating the state")
+        console.error("error updating the state");
       });
   },
 });

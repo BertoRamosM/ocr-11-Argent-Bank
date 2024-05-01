@@ -4,6 +4,10 @@ import logo from "../../assets/img/argentBankLogo.webp";
 import { useDispatch } from "react-redux";
 import { logOut } from "../../features/authSlice";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchUserProfile } from "../../features/editUserSlice";
+
+
 
 const Header = () => {
   const { userName } = useSelector((state) => state.profile);
@@ -11,7 +15,11 @@ const Header = () => {
   const { isLoggedIn } = useSelector((store) => store.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchUserProfile());
+  }, [dispatch]);
 
+ 
   
 
   const handleLogOut = (e) => {
