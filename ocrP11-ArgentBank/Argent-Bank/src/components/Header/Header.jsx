@@ -1,6 +1,5 @@
 import "./Header.css";
 import { NavLink, useNavigate } from "react-router-dom";
-
 import logo from "../../assets/img/argentBankLogo.webp";
 import { useDispatch } from "react-redux";
 import { logOut } from "../../features/authSlice";
@@ -12,6 +11,8 @@ const Header = () => {
   const { isLoggedIn } = useSelector((store) => store.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  
 
   const handleLogOut = (e) => {
     e.preventDefault();
@@ -35,14 +36,14 @@ const Header = () => {
       <div>
         {isLoggedIn ? (
           <div className="navigation">
-            <NavLink
-            to={"/user"}
-              className="main-nav-item out-div">
+            <NavLink to={"/user"} className="main-nav-item out-div">
               <i
                 className="fa fa-user-circle"
                 style={{ paddingRight: "0.3rem" }}
               ></i>
-              <p>{userName}</p>
+              <p>
+                {userName}
+              </p>
             </NavLink>
             <NavLink className="main-nav-item out-div" onClick={handleLogOut}>
               <i

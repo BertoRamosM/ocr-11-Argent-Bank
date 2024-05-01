@@ -3,6 +3,12 @@ import moneyIcon from "../../../assets/img/icon-money.webp";
 import securityIcon from "../../../assets/img/icon-security.webp";
 import Hero from "../../Hero/Hero";
 import Features from "./Features/Features";
+import { useEffect } from "react";
+import { logOut } from "../../../features/authSlice";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+
 
 const ListOfFeatures = [
   {
@@ -26,6 +32,22 @@ const ListOfFeatures = [
 ];
 
 const Home = () => {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+
+  useEffect(() => {
+    const storedToken =
+      localStorage.getItem("token")
+    if (!storedToken) {
+      logOut();
+      navigate("/");
+      return;
+    } else {
+      dispatch({ type: "auth/login/fulfilled", payload: storedToken });
+    }
+  }, [dispatch, navigate]);
+
   return (
     <>
       <main>
@@ -33,7 +55,7 @@ const Home = () => {
         <section className="features">
           <h2 className="sr-only">Features</h2>
 
-          {ListOfFeatures.map((feature) =>(
+          {ListOfFeatures.map((feature) => (
             <Features
               key={feature.id}
               title={feature.title}

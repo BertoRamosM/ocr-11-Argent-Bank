@@ -16,10 +16,11 @@ export const fetchLogin = createAsyncThunk(
       );
       const { token } = response.data.body;
 
+     
       if (rememberMe) {
-        localStorage.setItem("token", token);
+        localStorage.setItem('token', token);
       } else {
-        sessionStorage.setItem("token", token);
+        sessionStorage.setItem('token', token);
       }
       
       return token;
@@ -41,6 +42,7 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
       state.token = null;
       state.error = null;
+      localStorage.removeItem("token");
     },
   },
   extraReducers: (builder) => {

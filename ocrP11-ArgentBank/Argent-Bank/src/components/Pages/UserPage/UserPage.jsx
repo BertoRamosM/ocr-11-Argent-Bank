@@ -46,16 +46,17 @@ const UserPage = () => {
     setEditing(!isEditing)
   }
 
-  //on refresh, if token its available to stay in "/user", otherwise we go "/"
+  ///on refresh, if token its available to stay in "/user", otherwise we go "/"
 useEffect(() => {
   const storedToken =
     localStorage.getItem("token") || sessionStorage.getItem("token");
   if (!storedToken) {
+    logOut()
     navigate("/");
     return;
   }
   dispatch({ type: "auth/login/fulfilled", payload: storedToken });
-}, [dispatch, navigate]);
+}, [dispatch, navigate]); 
 
   return (
     <main className="main bg-dark-user">
